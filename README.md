@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# insured_react
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
 
-## Available Scripts
+**insured_react** é uma aplicação de página única (SPA) em React (v19.1.0) que permite gerenciar usuários segurados. Inclui autenticação, roteamento com rotas protegidas e integração simplificada com uma API backend.
 
-In the project directory, you can run:
+## Funcionalidades
 
-### `npm start`
+- **Contexto de Autenticação** (`src/auth/AuthContext.js`): Gerencia sessão de usuário e token de autenticação.  
+- **Configuração de API** (`src/config/api.js`): Instância Axios centralizada para chamadas HTTP.  
+- **Roteamento** (`src/index.js`, `src/pages/layout.js`): Navegação com React Router v7 e rotas protegidas.  
+- **Páginas** (`src/pages`):  
+  - `home.js`: Tela inicial.  
+  - `insureds.js`: Lista e detalhes de segurados.  
+  - `login.js` / `logout.js`: Autenticação de usuário.  
+  - `layout.js` / `index.js`: Componentes de layout e definição de rotas.  
+- **Bootstrap**: Layout responsivo e componentes visuais estilizados.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Estrutura de Diretórios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+public/
+  ├─ favicon.ico
+  ├─ index.html
+  ├─ logo192.png
+  ├─ logo512.png
+  ├─ manifest.json
+  └─ robots.txt
 
-### `npm test`
+src/
+  ├─ auth/
+  │   └─ AuthContext.js      # Provedor de contexto de autenticação
+  ├─ config/
+  │   └─ api.js              # Configuração Axios
+  ├─ pages/
+  │   ├─ home.js             # Página Home
+  │   ├─ insureds.js         # Página de segurados
+  │   ├─ layout.js           # Componente de layout e rotas
+  │   ├─ login.js            # Tela de login
+  │   ├─ logout.js           # Tela de logout
+  │   └─ index.js            # Ponto de entrada de rotas
+  ├─ index.js                # Renderiza App
+  └─ package.json            # Dependências e scripts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+.env                         # Variáveis de ambiente (ex: REACT_APP_API_URL)
+.gitignore                   # Arquivos ignorados pelo Git
+README.md                    # Este arquivo
+```
 
-### `npm run build`
+## Começando
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pré-requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js >= 16.x  
+- npm >= 8.x ou yarn >= 1.x  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Instalação
 
-### `npm run eject`
+1. Clone o repositório:
+   ```bash
+   git clone https://seu-repositorio.git
+   cd insured_react
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
+3. Crie um arquivo `.env` na raiz com as variáveis necessárias:
+   ```env
+   REACT_APP_API_URL=https://api.seudominio.com
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Executando a aplicação
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Iniciar em modo de desenvolvimento:
+  ```bash
+  npm start
+  # ou
+  yarn start
+  ```
+  Acesse: `http://localhost:3000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Build para produção:
+  ```bash
+  npm run build
+  # ou
+  yarn build
+  ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Scripts Disponíveis
 
-## Learn More
+| Script   | Descrição                            |
+|----------|--------------------------------------|
+| `start`  | Inicia o servidor de desenvolvimento |
+| `build`  | Cria otimizações para produção       |
+| `test`   | Executa suíte de testes              |
+| `eject`  | Ejecta configurações do CRA          |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Variáveis de Ambiente
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Variável            | Descrição                   |
+|---------------------|-----------------------------|
+| `REACT_APP_API_URL` | URL base da API backend     |
 
-### Code Splitting
+## Dependências
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **React** (v19.1.0)  
+- **React DOM** (v19.1.0)  
+- **React Router DOM** (v7.5.3)  
+- **React Scripts** (5.0.1)  
+- **Web Vitals** (2.1.4)  
+- **Testing Library** (DOM, React, Jest, User Event)  
 
-### Analyzing the Bundle Size
+## Contribuindo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Fork o repositório  
+2. Crie uma branch feature: `git checkout -b feature/nova-funcionalidade`  
+3. Commit suas alterações: `git commit -m "feat: descrição da mudança"`  
+4. Push para a branch: `git push origin feature/nova-funcionalidade`  
+5. Abra um Pull Request  
 
-### Making a Progressive Web App
+## Licença
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este projeto está licenciado sob a [MIT License](LICENSE).
