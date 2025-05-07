@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../auth/AuthContext";
@@ -35,15 +34,15 @@ export function Login() {
       if (!response.ok || result.sucesso === false) {
         setAlert({ type: 'danger', message: result.mensagem || 'Erro desconhecido.' });
       } else {
-        // sucesso: grava token e avança para insureds
-        //localStorage.setItem('token', result.dados.token);
-        //localStorage.setItem("abilities", JSON.stringify(result.dados.abilities));
+        
+        localStorage.setItem('token', result.dados.token);
+        localStorage.setItem("abilities", result.dados.abilities);
+        
         login(result.dados.token, result.dados.abilities);
 
         navigate('/insureds');
       }
     } catch (err) {
-      //console.error(err);
       setAlert({ type: 'danger', message: 'Falha ao conectar com o servidor.' });
     } finally {
       setLoading(false);
