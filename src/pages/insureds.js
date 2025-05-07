@@ -98,29 +98,29 @@ function InsuredList(props) {
     }, []);
 
     async function deleteInsured(id){
-    setError('');
-    const token = localStorage.getItem('token');
-    const headers = { 'Content-Type': 'application/json' };
-    if (token) headers['Authorization'] = `Bearer ${token}`;
+      setError('');
+      const token = localStorage.getItem('token');
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
 
-    try {
-      const resp = await fetch(
-        `${INSURED_URL}/${id}`,
-        {
-          method: 'DELETE',
-          headers
+      try {
+        const resp = await fetch(
+          `${INSURED_URL}/${id}`,
+          {
+            method: 'DELETE',
+            headers
+          }
+        );
+
+        if (!resp.ok) {
+          throw new Error(`Erro HTTP ${resp.status}`);
         }
-      );
 
-      if (!resp.ok) {
-        throw new Error(`Erro HTTP ${resp.status}`);
+        fetchInsureds();
+      } catch (err) {
+        console.error('Erro ao deletar segurado:', err);
+        setError('Ocorreu um erro ao deletar. Tente novamente.');
       }
-
-      fetchInsureds();
-    } catch (err) {
-      console.error('Erro ao deletar segurado:', err);
-      setError('Ocorreu um erro ao deletar. Tente novamente.');
-    }
         
     }
   
@@ -255,15 +255,15 @@ function InsuredList(props) {
                 <div className="col-lg-6 mx-auto">
 
                     <form
-        noValidate
-        className={validated ? "was-validated" : ""}
-        onSubmit={handleSubmit}
-      >
-        <input 
-  type="hidden" 
-  name="id" 
-  value={props.insured.id || ""} 
-/>
+                          noValidate
+                          className={validated ? "was-validated" : ""}
+                          onSubmit={handleSubmit}
+                    >
+                    <input 
+                      type="hidden" 
+                      name="id" 
+                      value={props.insured.id || ""} 
+                    />
         <div className="row mb-3">
           <label className="col-sm-4 col-form-label">
             Nome <span className="text-danger">*</span>

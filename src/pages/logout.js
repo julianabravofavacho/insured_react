@@ -13,17 +13,14 @@ export function Logout() {
 
     async function doLogout() {
       const token = localStorage.getItem('token');
-      /*if (!token) {
-        // já deslogado
+      if (!token) {
         return navigate('/login', { replace: true });
-      }*/
+      }
 
       try {
         const resp = await fetch(
-          // 1) monta a URL correta
           `${AUTH_LOGOUT_URL}`,
           {
-            // 2) usa DELETE para bater com o @OA\DELETE lá no PHP
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
@@ -41,9 +38,9 @@ export function Logout() {
           );
         }
 
-        // 3) só remove token _depois_ que o back confirmou
         localStorage.removeItem('token');
         localStorage.removeItem('abilities');
+        
         navigate('/login', { replace: true });
       } catch (err) {
         console.error('Logout falhou:', err);
