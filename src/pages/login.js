@@ -28,16 +28,11 @@ export function Login() {
         body: JSON.stringify({ email, password })
       });
 
-      //  Mesmo quando retorna 400, ainda damos response.json()
       const result = await response.json();
 
       if (!response.ok || result.sucesso === false) {
         setAlert({ type: 'danger', message: result.mensagem || 'Erro desconhecido.' });
-      } else {
-        
-        localStorage.setItem('token', result.dados.token);
-        localStorage.setItem("abilities", result.dados.abilities);
-        
+      } else {        
         login(result.dados.token, result.dados.abilities);
 
         navigate('/insureds');
