@@ -58,11 +58,12 @@ function InsuredList(props) {
     const [insureds, setInsureds] = useState([]);
     const [error, setError] = useState('');
     const { abilities } = useAuth();
-  const canEdit = abilities.includes("*");
+    const canEdit = abilities.includes("*");
   
     async function fetchInsureds() {
       setError('');
       const token = localStorage.getItem('token');
+      console.log(token);
       if (!token) {
         setError('Você não está autenticado');
         return;
